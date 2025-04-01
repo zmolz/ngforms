@@ -1,0 +1,6 @@
+<form class="flex-center-column" (ngSubmit)="submit()">
+	<textarea [(ngModel)]="currValues" (ngModelChange)="currValues.set($event)" name="currValues"
+		placeholder="enter some csvs: (e.g. 1, 2, duck, blue)"></textarea>
+	<button [disabled]="!canAddValues()" type="submit">Add
+		Values</button>
+</form>

@@ -1,0 +1,11 @@
+<div class="flex center push-down"><h1>Template</h1></div>
+
+
+<div class="flex center">
+	<template-child [(allValues)]="allValues"></template-child>
+
+	<div class="flex center col">
+		<textarea disabled="true" [placeholder]="`All Values: ${allValues || ''}`"></textarea>
+		<button (click)="nuke()">clear values</button>
+	</div>
+</div>
