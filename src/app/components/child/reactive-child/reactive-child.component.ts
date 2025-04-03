@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { ListValidators } from '../../../validators/list.validators';
+import { CsvValidators } from '../../../validators/csv.validators';
 
 @Component({
 	selector: 'reactive-child',
 	imports: [CommonModule, ReactiveFormsModule],
 	templateUrl: './reactive-child.component.html',
 	styleUrl: './reactive-child.component.scss',
+	// this is how we let angular know we implemented cva
 	providers: [{
 		provide: NG_VALUE_ACCESSOR,
 		useExisting: ReactiveChildComponent,
@@ -26,23 +27,23 @@ export class ReactiveChildComponent implements ControlValueAccessor {
 		private readonly fb: FormBuilder
 	) {
 		const warmColors = new Set(['red', 'orange', 'yellow'])
-		const noWarmColors = ListValidators.noDisallowedWords(warmColors)
-		const noTrailingComma = ListValidators.doesNotContainValueAtIndex(',', -1)
+		const noWarmColors = CsvValidators.noDisallowedWords(warmColors)
+		const noTrailingComma = CsvValidators.doesNotContainValueAtIndex('', -1) // empty space means last el was ','
 
 		this.form = this.fb.group({
 			// control name: [ initial value, list of validators ]
-			currValues: ['', [noWarmColors, noTrailingComma, ListValidators.minItems(5)]]
+			currValues: ['', [noWarmColors, noTrailingComma, CsvValidators.minItems(5)]]
 		})
 	}
 
 	submit() {
 		const currValues: string[] = this.form.get('currValues')?.value.split(/\s*,\s*/)
 		this.allValues = this.allValues.concat(currValues)
-		this.form.get('currValues')?.patchValue('')
 
 		// notify parent that value has changed -- pass the value we want to track
 		console.log('updating control in parent, from child')
 		this._onChange(this.allValues)
+		this.form.get('currValues')?.patchValue('')
 	}
 
 	// implicitly called by parent when form value changes in parent, to update child component

@@ -1,12 +1,14 @@
-<div class="flex center push-down"><h1>Reactive</h1></div>
+<div class="flex center push-down">
+	<h1>Reactive</h1>
+</div>
 
 <div class="flex center">
-
 	<form [formGroup]="form">
 		<reactive-child formControlName="allValues"></reactive-child>
 	</form>
 
 	<div class="flex center col">
+		<h3>Parent</h3>
 		<textarea disabled="true"
 			[placeholder]="`All Values: ${form.get('allValues')?.value || ''}`"></textarea>
 		<button (click)="nuke()">clear values</button>

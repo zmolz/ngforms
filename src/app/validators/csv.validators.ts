@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-export class ListValidators {
+export class CsvValidators {
 
 	static readonly minItems = (num: number): ValidatorFn => (control: AbstractControl): ValidationErrors | null => {
 		if (typeof control.value !== 'string') {
@@ -23,6 +23,8 @@ export class ListValidators {
 		}
 
 		let csv = control.value.split(/\s*,\s*/)
+
+		console.log(csv)
 
 		if (index >= csv.length || index * -1 > csv.length) {
 			return {

@@ -1,6 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="submit()" class="flex-center-column">
+	<h3>Child</h3>
 	<textarea formControlName="currValues"
 		placeholder="enter some csvs: (e.g. 1, 2, duck, blue)"></textarea>
-	<button [disabled]="form.invalid" type="submit">Add
+	<button [class]="{'disabled': form.invalid}" [disabled]="form.invalid" type="submit">Add
 		Values</button>
 </form>

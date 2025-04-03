@@ -22,10 +22,18 @@ export class TemplateChildComponent {
     // no warm colors
     if (this.currValuesList().some(v => warmColors.has(v))) return false
 
+    // this function grows as we add more form elements and validation
+    // even if you move to other functions, still gonna be a lot of 
+    // code added to this file 
+
+    // .
+    // .
+    // .
+
     return true
   })
   @Input() allValues: string[] = []
-  // the fact that this works really grinds my gears! THIS FEATURE DEPENDS ON HOW YOU NAME YOUR VARIABLES
+  // the fact that THIS FEATURE DEPENDS ON HOW YOU NAME YOUR VARIABLES
   @Output() allValuesChange = new EventEmitter<string[]>();
   
   submit() {

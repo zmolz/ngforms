@@ -5,6 +5,7 @@
 	<template-child [(allValues)]="allValues"></template-child>
 
 	<div class="flex center col">
+		<h3>Parent</h3>
 		<textarea disabled="true" [placeholder]="`All Values: ${allValues || ''}`"></textarea>
 		<button (click)="nuke()">clear values</button>
 	</div>
