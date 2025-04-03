@@ -37,8 +37,6 @@ export class CsvValidators {
 			: null
 	}
 
-
-
 	static readonly noDisallowedWords = (disallowed: Set<string>): ValidatorFn => (control: AbstractControl): ValidationErrors | null => {
 		if (typeof control.value !== 'string') {
 			return {

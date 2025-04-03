@@ -1,59 +1,21 @@
-# Angularbox
+# Reactive vs Template-driven forms in Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
+this is a simple angular application that demonstrates the difference between template-driven and reactive forms.  
+i have implemented the same form in each style, in hopes to easily compare and contrast the two methods.  
+the form that i have implemented is specified as follows  
 
-## Development server
+__in child component__
+* capture text input of comma separated values, using forms
+* on submit, append those values to a list of all values. 
+* only allow submission when 3 conditions are true
+	* there are 5 or more values in the current list
+	* red, orange, and yellow are not values in the list
+	* there is no trailing comma
 
-To start a local development server, run:
+__in parent component__
+* the parent component maintains a form in which the child component is to be used
+* successfully propagate the value from the child form to the parent
+* successfully propagate updates from the parent to the child
 
-```bash
-ng serve
-```
+npm start, then go to localhost:4200/template or localhost:4200/reactive
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

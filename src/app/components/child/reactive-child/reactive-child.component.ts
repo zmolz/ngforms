@@ -32,8 +32,8 @@ export class ReactiveChildComponent implements ControlValueAccessor {
 
 		this.form = this.fb.group({
 			// control name: [ initial value, list of validators ]
-			currValues: ['', [noWarmColors, noTrailingComma, CsvValidators.minItems(5)]]
-		})
+			currValues: this.fb.control(['', [noWarmColors, noTrailingComma, CsvValidators.minItems(5)]])
+		}) 
 	}
 
 	submit() {
@@ -46,7 +46,7 @@ export class ReactiveChildComponent implements ControlValueAccessor {
 		this.form.get('currValues')?.patchValue('')
 	}
 
-	// implicitly called by parent when form value changes in parent, to update child component
+	// called by parent when form value changes in parent, to update child component
 	writeValue(value: string[]): void {
 		console.log('writing value to child, from parent')
 		if (value) {
@@ -63,4 +63,4 @@ export class ReactiveChildComponent implements ControlValueAccessor {
 	registerOnTouched(fn: (_: any) => void) {
 		this._onTouched = fn
 	}
-}
+} 

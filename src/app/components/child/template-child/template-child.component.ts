@@ -8,8 +8,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './template-child.component.scss'
 })
 export class TemplateChildComponent {
-
-
   currValues: WritableSignal<string> = signal('')
   currValuesList: Signal<string[]> = computed(() => this.currValues().split(/\s*,\s*/))
   canAddValues: Signal<boolean> = computed(() => {
